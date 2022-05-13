@@ -22,8 +22,8 @@
 
 - name: Set password for root user
   mysql_user:
-    name: admin
-    password: "sW^TxU6R"
+    name: root
+    password: "{{ mysql_pass }}"
     priv: '*.*:ALL,GRANT'
     host: 'localhost'
     login_unix_socket: /var/run/mysqld/mysqld.sock
@@ -38,8 +38,8 @@
 
 - name: Create Database
   mysql_db:
-    login_user: admin 
-    login_password: "sW^TxU6R"
+    login_user: root
+    login_password: "{{ mysql_pass }}"
     name: wordpress 
     state: present
 
